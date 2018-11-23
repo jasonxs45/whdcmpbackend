@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>websocket test</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  const hostUrl = 'ws://127.0.0.1:2000'
+  var ws = new WebSocket(hostUrl)
+  ws.onopen = function () {
+    console.log("连接状态", ws.readyState)
+    console.log("open")
+    ws.send('hello啊，我是浏览器')
+  };
+  ws.onmessage = function (evt) {
+    console.log(evt.data)
+  };
+  ws.onclose = function (evt) {
+    console.log("WebSocketClosed!")
+    console.log(evt)
+  };
+  ws.onerror = function (evt) {
+    console.log("WebSocketError!")
+  };
+
+</script>
+
+</html>
